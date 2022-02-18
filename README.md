@@ -1,5 +1,4 @@
-
-# Todo App with React and Redux
+# Todo App with React and Redux [![ci](https://github.com/bahmutov/todo-react-redux/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/bahmutov/todo-react-redux/actions/workflows/ci.yml)
 
 ## Running the example
 
