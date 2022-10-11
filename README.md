@@ -1,6 +1,7 @@
 # Todo App with React and Redux [![ci](https://github.com/bahmutov/todo-react-redux/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/bahmutov/todo-react-redux/actions/workflows/ci.yml)
 
 - 📺 [Write E2E Tests Using Cypress And Run Them On GitHub Actions](https://www.youtube.com/watch?v=uzAbSwAlX7Q)
+- 🎓 [Cypress Plugins](https://cypress.tips/courses/cypress-plugins) course
 
 ## Running the example
 
