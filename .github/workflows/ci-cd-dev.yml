@@ -9,8 +9,9 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
 
-      - name: Start local server
-        run: npm start #In order to run E2E test, test server/ app must be started
+      - name: Checkout source code and Start local server
+        uses: actions/checkout@v2
+        run: npm install && npm start #In order to run E2E test, test server/ app must be started
 
       - name: Checkout E2E code from a separate repo # Checkout repo which contains E2E code
         id: checkout_step
@@ -21,7 +22,7 @@ jobs:
 
       - name: Print information
         run: echo ${{ steps.checkout_step.outputs }}
-        
+
       - name: Install dependencies
         run: cd cypress-tests && npm install # Access to the E2E folder and install need dependencies to run the test
       
