@@ -1,6 +1,6 @@
 name: CI/CD Workflow for main branch
 on: 
-  [push]:
+  push:
     branches:
       - main
 jobs:

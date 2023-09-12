@@ -1,6 +1,6 @@
 name: CI/CD flow for Dev branch
 on: 
-  [push]:
+  push:
     branches:
       - dev
 jobs:
