@@ -4,14 +4,18 @@ on:
     branches:
       - dev
 jobs:
-  test:
-    # use the reusable workflow to check out the code, install dependencies
-    # and run the Cypress tests
-    # https://github.com/bahmutov/cypress-workflows
-    uses: bahmutov/cypress-workflows/.github/workflows/standard.yml@v1
-    # Incorrect use of path
-    #uses: tranvantoan-qn/cypress-workflows/tree/main/.github/workflows/standard.yml@v1 
-    #uses: tranvantoan-qn/cypress-workflows/.github/workflows/standard.yml@v1
-    with:
-      start: 'npm start'
-      wait-on: 'http://localhost:3000/'
+  cypress-run:
+    name: Cypress run
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout E2E code from a separate repo
+        uses: actions/checkout@v3
+        with:
+          repository: tranvantoan-qn/todo-react-E2E-test
+          path: cypress-tests
+
+      - name: Install dependencies
+        run: cd cypress-tests && npm install
+      
+      - name: Run tests
+        run: cd cypress-tests && npx cypress open 
