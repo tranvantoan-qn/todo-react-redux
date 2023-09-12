@@ -30,12 +30,13 @@ jobs:
       #In order to run E2E test, test server/ app must be started
       # npm install && npm start && npx wait-on http://localhost:3000 
         run: |
-          npm install && npm start &
+          npm install && npm start && npx wait-on http://localhost:3000 &
         env:
           CI: true
       
       - name: Run tests
+      # Run cypress command which will run the test
         run: |
-          cd cypress-tests && npx cypress run  # Run cypress command which will run the test
+          cd cypress-tests && npx cypress run
         env:
           CI: true
