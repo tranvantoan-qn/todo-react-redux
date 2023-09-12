@@ -8,14 +8,22 @@ jobs:
     name: Cypress run
     runs-on: ubuntu-22.04
     steps:
-      - name: Checkout E2E code from a separate repo
+
+      - name: Start local server
+        run: npm start #In order to run E2E test, test server/ app must be started
+
+      - name: Checkout E2E code from a separate repo # Checkout repo which contains E2E code
+        id: checkout_step
         uses: actions/checkout@v3
         with:
-          repository: tranvantoan-qn/todo-react-E2E-test
-          path: cypress-tests
+          repository: tranvantoan-qn/todo-react-E2E-test  # Define repo
+          path: cypress-tests    # Where to checkout the code, this will be a sub-folder within workflow runner's workspace. 
 
+      - name: Print information
+        run: echo ${{ steps.checkout_step.outputs }}
+        
       - name: Install dependencies
-        run: cd cypress-tests && npm install
+        run: cd cypress-tests && npm install # Access to the E2E folder and install need dependencies to run the test
       
       - name: Run tests
-        run: cd cypress-tests && npx cypress open 
+        run: cd cypress-tests && npx cypress open  # Run cypress command which will run the test
