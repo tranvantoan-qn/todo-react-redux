@@ -34,9 +34,13 @@ jobs:
         env:
           CI: true
       
+      - name: Wait for the app server to be started
+        run: 
+          npx wait-on http://localhost:3000
+
       - name: Run tests
       # Run cypress command which will run the test
         run: |
-          cd cypress-tests && npx wait-on http://localhost:3000 && npx cypress run
+          cd cypress-tests && npx cypress run
         env:
           CI: true
