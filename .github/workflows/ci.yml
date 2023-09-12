@@ -8,7 +8,7 @@ jobs:
     #uses: bahmutov/cypress-workflows/.github/workflows/standard.yml@v1
     # Incorrect use of path
     #uses: tranvantoan-qn/cypress-workflows/tree/main/.github/workflows/standard.yml@v1 
-    uses: tranvantoan-qn/cypress-workflows/.github/workflows/standard.yml@v1
+    uses: tranvantoan-qn/cypress-workflows/.github/workflows/standard.yml
     with:
       start: 'npm start'
       wait-on: 'http://localhost:3000/'
