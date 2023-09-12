@@ -12,12 +12,6 @@ jobs:
       - name: Checkout source code under test
         uses: actions/checkout@v2
       
-      ## NOTE: a step cannot have both the `uses` and `run` keys
-      - name: Start local server
-        run: npm install && npm start && npx wait-on http://localhost:3000 #In order to run E2E test, test server/ app must be started
-        env:
-          CI: true
-
       - name: Checkout E2E code from a separate repo # Checkout repo which contains E2E code
         id: checkout_step
         uses: actions/checkout@v3
@@ -30,6 +24,14 @@ jobs:
 
       - name: Install dependencies
         run: cd cypress-tests && npm install # Access to the E2E folder and install need dependencies to run the test
+
+      ## NOTE: a step cannot have both the `uses` and `run` keys
+      - name: Start local server
+        run: npm install && npm start && npx wait-on http://localhost:3000 #In order to run E2E test, test server/ app must be started
+        env:
+          CI: true
       
       - name: Run tests
         run: cd cypress-tests && npx cypress run  # Run cypress command which will run the test
+        env:
+          CI: true
