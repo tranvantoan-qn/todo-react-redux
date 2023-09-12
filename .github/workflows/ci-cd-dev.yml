@@ -27,11 +27,13 @@ jobs:
 
       ## NOTE: a step cannot have both the `uses` and `run` keys
       - name: Start local server
-        run: npm install && npm start && npx wait-on http://localhost:3000 #In order to run E2E test, test server/ app must be started
+        run: |
+          npm install && npm start && npx wait-on http://localhost:3000 #In order to run E2E test, test server/ app must be started
         env:
           CI: true
       
       - name: Run tests
-        run: cd cypress-tests && npx cypress run  # Run cypress command which will run the test
+        run: |
+          cd cypress-tests && npx cypress run  # Run cypress command which will run the test
         env:
           CI: true
