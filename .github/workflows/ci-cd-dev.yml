@@ -27,8 +27,10 @@ jobs:
 
       ## NOTE: a step cannot have both the `uses` and `run` keys
       - name: Start local server
+      #In order to run E2E test, test server/ app must be started
+      # npm install && npm start && npx wait-on http://localhost:3000 
         run: |
-          npm install && npm start && npx wait-on http://localhost:3000 #In order to run E2E test, test server/ app must be started
+          npm install && npm start &
         env:
           CI: true
       
