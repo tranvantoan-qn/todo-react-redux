@@ -1,4 +1,4 @@
-name: ci
+name: CI/CD flow for Dev branch
 on: 
   [push]:
     branches:
