@@ -37,6 +37,6 @@ jobs:
       - name: Run tests
       # Run cypress command which will run the test
         run: |
-          cd cypress-tests && npx cypress run
+          cd cypress-tests && npx wait-on http://localhost:3000 && npx cypress run
         env:
           CI: true
