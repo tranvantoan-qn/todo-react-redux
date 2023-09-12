@@ -30,7 +30,7 @@ jobs:
       #In order to run E2E test, test server/ app must be started
       # npm install && npm start && npx wait-on http://localhost:3000 
         run: |
-          npm install && nohup npm start > /dev/null 2>&1 &
+          npm install && npm start
         env:
           CI: true
       
