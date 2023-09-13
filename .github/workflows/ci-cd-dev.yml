@@ -11,6 +11,14 @@ jobs:
 
       - name: Checkout source code under test
         uses: actions/checkout@v2
+
+      - name: Build and Run Local Server on Docker
+        run: |
+          docker build -t my-custom-image .
+          docker run -d -p 3000:3000 my-custom-image
+        ports:
+          - 3000:3000
+        id: server
       
       - name: Checkout E2E code from a separate repo # Checkout repo which contains E2E code
         id: checkout_step
@@ -26,13 +34,13 @@ jobs:
         run: cd cypress-tests && npm install # Access to the E2E folder and install need dependencies to run the test
 
       ## NOTE: a step cannot have both the `uses` and `run` keys
-      - name: Start local server
+      #- name: Start local server
       #In order to run E2E test, test server/ app must be started
       # npm install && npm start && npx wait-on http://localhost:3000 
-        run: |
-          npm install && npm start
-        env:
-          CI: true
+       # run: |
+      #    npm install && npm start
+      #  env:
+       #   CI: true
       
       - name: Wait for the app server to be started
         run: 
